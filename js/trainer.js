@@ -61,7 +61,7 @@ function Question(el) {
 };
 
 Question.prototype.changed = function(ev) {
-    this.validate(ev.srcElement); 
+    this.validate(ev.target); 
     
     //console.log("last ",dev.lastChild,dev.lastChild.value)
     if (this.dev.lastChild.value !== "") {
