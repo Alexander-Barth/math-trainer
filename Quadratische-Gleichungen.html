@@ -1,0 +1,162 @@
+<!DOCTYPE HTML>
+
+<!-- HALLO NOAH, DEN QUELLCODE DARFST DU ABER NICHT LESEN!!! -->
+
+<html>
+  <head>
+    <meta charset="utf-8"/>
+
+
+
+<!--
+
+/******************************************************************************
+ *                                                                            *
+ *  Copyright (C) 2018 Alexander Barth <barth.alexander@gmail.com>.           *
+ *                                                                            *
+ *  This program is free software: you can redistribute it and/or modify      *
+ *  it under the terms of the GNU Affero General Public License as published  *
+ *  by the Free Software Foundation, either version 3 of the License, or      *
+ *  (at your option) any later version.                                       *
+ *                                                                            *
+ *  This program is distributed in the hope that it will be useful,           *
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of            *
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the             *
+ *  GNU Affero General Public License for more details.                       *
+ *                                                                            *
+ *  You should have received a copy of the GNU Affero General Public License  *
+ *  along with this program.  If not, see <http://www.gnu.org/licenses/>.     *
+ *                                                                            *
+ ******************************************************************************/
+
+-->
+
+
+    <script src="js/mathjs-3.20.0/math.min.js" type="text/javascript"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+  </head>
+
+  
+  <!--
+      for i = 1:10; x = rand(-12:12); y = rand(-12:12); A = rand(-12:12,2,2); print("""<section class="ex" data-x="$(x)" data-y="$(y)">
+      <div>
+        $(A[1,1])x + $(A[1,2])y = $(A[1,1]*x + A[1,2]*y)<br>
+        $(A[2,1])x + $(A[2,2])y = $(A[2,1]*x + A[2,2]*y)
+      </div>
+  </section>
+  
+  """); end
+  -->
+  <body>
+    <h1>Quadratische Gleichungen</h1>
+    
+    <p>Löse folgende Gleichungen mit Zwischenschritte.</p>
+
+    <p>x^2 bedeutet x hoch 2 und sqrt(2) ist die Quadratwurzel von 2. Für Brüche verwende einen Schrägstrich, z.B. ⅖ kann 2/5 geschriben werden (oder auch 0.4).</p>
+
+    <p>Notiere die Lösungen einfach mit x. Zum Beispiel die Lösung von</p>
+
+    <p>x^2 - 1 = 0</p>
+
+    ist
+    <p>x = 1</p>
+    und
+    <p>x = -1</p>
+
+    
+    <section class="ex" data-solution="[{x: 2},{x: -2}]">
+      1.
+      <div>
+        x^2 = 4
+      </div>
+    </section>
+    
+    <section class="ex" data-solution="[{x: 4},{x: -4}]">
+      2.
+      <div>
+        3 x^2 = 48
+      </div>
+    </section>
+
+    <section class="ex" data-solution="[{x: 0.5},{x: -0.5}]">
+      3. Schreibe die Antwort als Kommazahl.
+      <div>
+        8 x^2 = 2
+      </div>
+    </section>
+    
+    <section class="ex" data-solution="[{x: 0.25},{x: -0.25}]">
+      4. Schreibe die Antwort als Kommazahl.
+      <div>
+        4 x^2 = 1/4
+      </div>
+    </section>
+    
+    <section class="ex" data-solution="[{x: 0},{x: 2}]">
+      5.
+      <div>
+        x^2 - 2x = 0
+      </div>
+    </section>
+
+    <section class="ex" data-solution="[{x: 0},{x: 2}]">
+      6.
+      <div>
+        3 x^2 - 12 x = 0
+      </div>
+    </section>
+
+    <section class="ex" data-solution="[{x: 0},{x: 1}]">
+      7.
+      <div>
+        3 x^2 - x = 2 x
+      </div>
+    </section>
+
+    <section class="ex" data-solution="[{x: 0},{x: 2}]">
+      8.
+      <div>
+        7 x^2 - 16 = 3 x^2
+      </div>
+    </section>
+
+    <section class="ex" data-solution="[{x: -1},{x: 3}]">
+      9.
+      <div>
+        3 (x+1) - x (x+1) = 0
+      </div>
+    </section>
+
+    <section class="ex" data-solution="[{x: 1},{x: -2}]">
+      10.
+      <div>
+        (x - 1) + x^2 - 1 = 0
+      </div>
+    </section>
+
+    <section class="ex" data-solution="[{x: 1},{x: -6}]">
+      11.
+      <div>
+        5 (x - 1) + x^2 - 1 = 0
+      </div>
+    </section>
+    
+    <section class="ex" data-solution="[{x: 2},{x: -6}]">
+      12.
+      <div>
+        8 (2 x - 4) + 4x^2 - 16 = 0
+      </div>
+    </section>
+
+    <section class="ex" data-solution="[{x: 1},{x: 3}]">
+      12.
+      <div>
+        (2 x - 4)^2 - 4 = 0
+      </div>
+    </section>
+    
+
+    <script src="js/trainer.js" type="text/javascript"></script>
+  </body>
+</html>
