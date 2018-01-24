@@ -20,19 +20,11 @@
 
 function Question(el) {
     var that = this;
-    this.solution = {};
-    
-    [].forEach.call(el.attributes, function(attr) {
-        if (/^data-/.test(attr.name)) {
-            var camelCaseName = attr.name.substr(5).replace(/-(.)/g, function ($0, $1) {
-                return $1.toUpperCase();
-            });
-            that.solution[camelCaseName] = math.eval(attr.value);
-        }
-    });
+    this.solutions = eval(el.getAttribute("data-solution"));
 
     // solutions found
     this.found = {};
+    this.foundsolutions = this.solutions.map(function(x) { return {}; });
 
     // main element
     this.form = el;
@@ -79,8 +71,16 @@ Question.prototype.changed = function(ev) {
         elem = elem.nextSibling;        
     }
 
-    if (JSON.stringify(Object.keys(this.solution).sort()) === 
-        JSON.stringify(Object.keys(this.found).sort())) {
+    // check if all solutions where found
+    var foundall = true;
+    
+    for (var i = 0; i < this.solutions.length; i++) {
+        foundall = foundall & 
+            (JSON.stringify(Object.keys(this.solutions[i]).sort()) === 
+             JSON.stringify(Object.keys(this.foundsolutions[i]).sort()));        
+    }
+
+    if (foundall) {
         this.form.classList.add("solved");
         this.assess.style.display = "block";
     }
@@ -98,18 +98,26 @@ Question.prototype.validate = function(elem) {
 
     if (expr.length == 2) {
         var lhs = expr[0].trim();
-        var value = this.solution[lhs];
-        if (value !== undefined) {
-            if (expr[1].trim() === value.toString()) {
-               elem.classList.add("answer");
-               this.found[lhs] = true; 
-               return;
+
+        for (var i = 0; i < this.solutions.length; i++) {
+            var value = this.solutions[i][lhs];
+
+            if (value !== undefined) {
+                if (expr[1].trim() === value.toString()) {
+                    elem.classList.add("answer");
+                    this.foundsolutions[i][lhs] = true; 
+                    return;
+                }
             }
         }
 
-        valid = math.parse(expr[0]).eval(this.solution) ===
-           math.parse(expr[1]).eval(this.solution);
- 
+        valid = false;
+
+        for (var i = 0; i < this.solutions.length; i++) {
+            valid = valid || (math.parse(expr[0]).eval(this.solutions[i]) ===
+                math.parse(expr[1]).eval(this.solutions[i]));
+        }
+        
         if (valid) {
             elem.classList.add("valid");
             return
