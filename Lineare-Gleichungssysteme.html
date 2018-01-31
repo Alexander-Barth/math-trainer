@@ -39,10 +39,11 @@
 
   
   <!--
-      for i = 1:10; x = rand(-12:12); y = rand(-12:12); A = rand(-12:12,2,2); print("""<section class="ex" data-x="$(x)" data-y="$(y)">
+      withsign(x) = (x > 0 ? "+ $(x) " : "- $(-x)") 
+      for i = 1:10; x = rand(-12:12); y = rand(-12:12); A = rand([-12:-1; 1:12;],2,2); print("""<section class="ex" data-solution="[{x: $(x), y: $(y)}]">
       <div>
-        $(A[1,1])x + $(A[1,2])y = $(A[1,1]*x + A[1,2]*y)<br>
-        $(A[2,1])x + $(A[2,2])y = $(A[2,1]*x + A[2,2]*y)
+        $(A[1,1])x $(withsign(A[1,2]))y = $(A[1,1]*x + A[1,2]*y)<br>
+        $(A[2,1])x $(withsign(A[2,2]))y = $(A[2,1]*x + A[2,2]*y)
       </div>
   </section>
   

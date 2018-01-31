@@ -90,6 +90,7 @@ Question.prototype.changed = function(ev) {
 
 // verify individual line
 Question.prototype.validate = function(elem) {
+    var tol = 1e-6;
     var str = elem.value;
 
     var expr = str.split("=");
@@ -103,7 +104,7 @@ Question.prototype.validate = function(elem) {
             var value = this.solutions[i][lhs];
 
             if (value !== undefined) {
-                if (expr[1].trim() === value.toString()) {
+                if (Math.abs(math.eval(expr[1].trim()) - value) < tol) {
                     elem.classList.add("answer");
                     this.foundsolutions[i][lhs] = true; 
                     return;
@@ -114,8 +115,8 @@ Question.prototype.validate = function(elem) {
         valid = false;
 
         for (var i = 0; i < this.solutions.length; i++) {
-            valid = valid || (math.parse(expr[0]).eval(this.solutions[i]) ===
-                math.parse(expr[1]).eval(this.solutions[i]));
+            valid = valid || (Math.abs(math.parse(expr[0]).eval(this.solutions[i]) -
+                                       math.parse(expr[1]).eval(this.solutions[i])) < tol);
         }
         
         if (valid) {
